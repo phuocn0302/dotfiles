@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# source wal colors.
+source ~/.cache/wal/colors.sh
+
+DUNST_FILE=~/.config/dunst/dunstrc
+
+# update dunst based on pywal colors.
+sed -i '/background = /s/.*/background = "'$background'"/' $DUNST_FILE
+sed -i '/foreground = /s/.*/foreground = "'$foreground'"/' $DUNST_FILE
+sed -i '/frame_color = /s/.*/frame_color = "'$color3'"/' $DUNST_FILE

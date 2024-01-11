@@ -1,0 +1,15 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+	font: "JetbrainsMono NF Bold 11";
+}
+
+window {
+	width: 600px;
+}
+
+configuration {
+	show-icons: false;
+	cycle: false;
+	display-drun: "Search";
+}
