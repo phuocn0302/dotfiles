@@ -1,0 +1,21 @@
+set $wallpaper /home/Phuoc/Wallpapers/kogecha2.jpg
+
+set $background #0D0B10
+set $foreground #EFDFC5
+
+set $color0 #1B1923
+set $color1 #616B80
+set $color2 #70B3B4
+set $color3 #4284a7
+set $color4 #569F54
+set $color5 #7FB76F
+set $color6 #f0c674
+set $color7 #EFDFC5
+set $color8 #414242
+set $color9 #808899
+set $color10 #8CC2C3
+set $color11 #5D9DBF
+set $color12 #84BD82
+set $color13 #9DC891
+set $color14 #f5d9a2
+set $color15 #f5ead9
