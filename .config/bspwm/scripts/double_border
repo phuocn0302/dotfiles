@@ -14,13 +14,13 @@ targets() {
         normal) bspc query -N -n .local.\!focused.\!fullscreen ;;
         focused) bspc query -N -n .local.focused.\!fullscreen ;;
     esac | grep -i -v "$n" # Ignored
- }
+}
 
 draw() { chwb2 -I"$i" -O"$o" -i4 -o7 $* |:; }
 
 { echo; bspc subscribe node_focus node_geometry pointer_action; } |
-    while read -r _; do
-        [ "$n" ] || n=' '
-        i=$c1 o=$c3 draw "$(targets normal)"
-        i=$c2 o=$c3 draw "$(targets focused)"
-    done
+while read -r _; do
+    [ "$n" ] || n=' '
+    i=$c1 o=$c3 draw "$(targets normal)"
+    i=$c2 o=$c3 draw "$(targets focused)"
+done

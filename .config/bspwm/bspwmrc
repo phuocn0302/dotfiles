@@ -1,4 +1,5 @@
 #! /bin/sh
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 xrdb ~/.Xresources
 getcolors () {
@@ -30,17 +31,20 @@ bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-# bspc config top_padding 0
+bspc rule -a firefox desktop='^6' follow=on 
+bspc desktop '^6' --layout monocle
+
 
 # Startup
-killall -9 sxhkd dunst double_border picom polybar
+killall -9 xsettingsd feh sxhkd dunst double_border picom polybar
 
 sxhkd &
+xsettingsd &
 
 ~/.fehbg &
 pkill double_border; ~/.config/bspwm/scripts/double_border &
 ~/.config/dunst/dunst_pywal &
 
-gammastep -P -O 3000 &
+gammastep -m randr -P -O 2900 &
 polybar &
 picom --config ~/.config/picom/picom.conf

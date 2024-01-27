@@ -12,11 +12,11 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)	
+_comp_options+=(globdots)
 # End of lines added by compinstall
 
 # Set theme
-source ~/.config/.zsh/Themes/common.zsh-theme 
+source ~/.config/.zsh/Themes/common.zsh-theme
 
 # Plugins
 source ~/.config/.zsh/Plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -44,8 +44,8 @@ lf () {
 # Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
 # Thanks Ron! (see comments)
 function TRAPINT() {
-  vim_mode=$vim_ins_mode
-  return $(( 128 + $1 ))
+    vim_mode=$vim_ins_mode
+    return $(( 128 + $1 ))
 }
 
 
@@ -53,6 +53,7 @@ function TRAPINT() {
 export EDITOR=nvim
 export PISTOL_CHROMA_STYLE=vim
 export PF_INFO="ascii title os uptime pkgs memory palette"
+export PATH="/home/Phuoc/.local/bin:$PATH"
 
 # Aliases
 alias vim="nvim"
@@ -64,8 +65,16 @@ alias bspcf="nvim ~/.config/bspwm/bspwmrc"
 alias sxhkcf="nvim ~/.config/sxhkd/sxhkdrc"
 alias kittycf="nvim ~/.config/kitty/kitty.conf"
 alias zshc="source ~/.zshrc"
-alias warpstart="systemctl start warp-svc.service"
-alias warpstop="systemctl stop warp-svc.service"
+
+# Change warp mode to warp
+alias warpstart="warp-cli set-mode warp"
+
+# Change warp mode to dns
+alias warpstop="warp-cli set-mode doh"
+
+# Dotfiles git config
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias status="systemctl status"
 
 fetch
