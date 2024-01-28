@@ -31,7 +31,7 @@ super + d
   ~/.config/bspwm/scripts/discord   
 
 # open file manager
-super + t 
+super + e 
   thunar
 
 # quit/restart bspwm
