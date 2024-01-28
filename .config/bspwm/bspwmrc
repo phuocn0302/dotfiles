@@ -34,6 +34,8 @@ bspc config gapless_monocle      true
 bspc rule -a firefox desktop='^6' follow=on 
 bspc desktop '^6' --layout monocle
 
+bspc rule -a discord desktop='^5' follow=on 
+bspc rule -a Thunar desktop='^4' follow=on 
 
 # Startup
 killall -9 xsettingsd feh sxhkd dunst double_border picom polybar

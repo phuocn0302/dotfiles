@@ -26,6 +26,14 @@ super + shift + s
 super + b 
   ~/.config/bspwm/scripts/browser   
 
+# open discord and focus on desktop 5 
+super + d 
+  ~/.config/bspwm/scripts/discord   
+
+# open file manager
+super + t 
+  thunar
+
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
