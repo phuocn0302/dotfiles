@@ -1,0 +1,8 @@
+#!/bin/sh
+
+pgrep firefox > /dev/null
+if  [ $? -eq 0 ]; then
+  bspc desktop -f '^6'
+else
+  firefox &
+fi

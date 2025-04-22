@@ -1,0 +1,53 @@
+set hidden              
+set preview             
+set wrapscan            
+set scrolloff 3        
+set sixel
+
+set previewer ~/.config/lf/pv.sh
+set cleaner ~/.config/lf/cleaner.sh
+
+
+map <space> toggle
+map V invert
+
+map yy copy
+map dd cut
+map pp paste
+map x delete
+
+# File actions
+map r rename
+map n create
+map a :push %mkdir<space>
+
+# Search
+map / search
+map ? search-back
+map n search-next
+map N search-prev
+
+# Misc
+map Q quit!
+map R reload
+map ~ cd ~
+map i toggle preview
+
+# Fuzzy select (with fzf)
+map f push :fzf-select<enter>
+
+cmd fzf-select %{{
+    res="$(fzf)"
+    [ -n "$res" ] && lf -remote "send $id select \"$res\""
+}}
+
+cmd open %{{
+    case $(file --mime-type -Lb "$f") in
+        text/*|application/json) lf -remote "send $id \$$EDITOR \$fx";;
+        *) case "$f" in
+            *.json) lf -remote "send $id \$$EDITOR \$fx";;
+            *) for f in $fx; do $OPENER "$f" > /dev/null 2> /dev/null & done;;
+           esac;;
+    esac
+}}
+

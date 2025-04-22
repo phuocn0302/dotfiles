@@ -1,0 +1,25 @@
+#!/bin/sh
+
+c1=$(bspc config normal_border_color)
+c2=$(bspc config focused_border_color)
+c3=$(xrdb -q | grep '^\*background:' | cut -f2 | cut -c2-)
+
+c1=0x${c1#\#}
+c2=0x${c2#\#}
+c3=0x$c3
+
+targets() {
+    case $1 in
+        normal) bspc query -N -n .local.\!focused.\!fullscreen ;;
+        focused) bspc query -N -n .local.focused.\!fullscreen ;;
+    esac | grep -i -v "$n" # Ignored
+}
+
+draw() { chwb2 -I"$i" -O"$o" -i4 -o7 $* |:; }
+
+{ echo; bspc subscribe node_focus node_geometry pointer_action; } |
+while read -r _; do
+    [ "$n" ] || n=' '
+    i=$c1 o=$c3 draw "$(targets normal)"
+    i=$c2 o=$c3 draw "$(targets focused)"
+done

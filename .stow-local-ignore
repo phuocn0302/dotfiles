@@ -1,0 +1,11 @@
+install.sh
+pkg_lists.txt
+yotsu.json
+Pictures/
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+\.git
+\.gitignore

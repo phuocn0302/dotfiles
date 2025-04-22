@@ -1,0 +1,8 @@
+#!/bin/sh
+
+pgrep Discord > /dev/null
+if  [ $? -eq 0 ]; then
+  bspc desktop -f '^5'
+else
+  discord &
+fi
