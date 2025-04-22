@@ -36,7 +36,7 @@ for plugin in "${plugins[@]}"; do
   plugin_path="$ZSH_PLUGIN_DIR/$repo"
   url="https://github.com/$plugin.git"
 
-  if [ ! -d "$plugin_path" ]; then
+  if [ ! -d "$plugin_path" ] || [ -z "$(ls -A "$plugin_path")" ]; then
     echo "Cloning $repo"
     git clone --depth=1 "$url" "$plugin_path" > /dev/null 2>&1
   fi
