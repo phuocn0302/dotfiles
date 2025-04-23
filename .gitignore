@@ -1,4 +1,5 @@
 .histfile
 .zcompdump*
 backup/
+.config/zsh/Plugins/*
 
