@@ -1,2 +1,4 @@
 .histfile
-.zcompdump
+.zcompdump*
+backup/
+

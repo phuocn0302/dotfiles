@@ -1,7 +1,6 @@
 install.sh
 pkg_lists.txt
 yotsu.json
-Pictures/
 
 ^/README.*
 ^/LICENSE.*
@@ -11,3 +10,5 @@ Pictures/
 \.gitignore
 \.gitmodules
 
+backup
+Pictures
