@@ -5,6 +5,8 @@
 ~button2
     ;echo -n | xclip -in
 
+super + alt + y
+  wezterm start -- zsh -ic 'yay && bspc wm -r'
 
 # terminal emulator
 super + Return
