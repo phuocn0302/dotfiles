@@ -8,6 +8,7 @@ wmutils-git
 dunst
 fontconfig
 lf
+light
 neovim
 picom
 polybar

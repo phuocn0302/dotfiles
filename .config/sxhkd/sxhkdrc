@@ -115,3 +115,10 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	pamixer -t
+
+# laptop backlight
+XF86MonBrightnessUp
+	light -A 10
+
+XF86MonBrightnessDown
+	light -U 10
