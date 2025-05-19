@@ -52,23 +52,33 @@ done
 
 # Changing dir upon quitting lf
 lf () {
-    tmp="$(mktemp)"
-    /usr/bin/lf --last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
+  tmp="$(mktemp)"
+  /usr/bin/lf --last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir="$(cat "$tmp")"
+    rm -f "$tmp"
+    if [ -d "$dir" ]; then
+      if [ "$dir" != "$(pwd)" ]; then
+          cd "$dir"
+      fi
     fi
+  fi
 }
+
+# Auto nvim . when no arg
+nvim() {
+  if [ "$#" -eq 0 ]; then
+    command nvim .
+  else
+    command nvim "$@"
+  fi
+}
+
 # Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
 # Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
 function TRAPINT() {
-    vim_mode=$vim_ins_mode
-    return $(( 128 + $1 ))
+  vim_mode=$vim_ins_mode
+  return $(( 128 + $1 ))
 }
 
 function toggle_service() {
@@ -87,6 +97,13 @@ export EDITOR=nvim
 export PISTOL_CHROMA_STYLE=vim
 export PF_INFO="ascii title os uptime pkgs memory palette"
 export PATH="$HOME/.local/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Aliases
 alias vim="nvim"
@@ -116,7 +133,9 @@ done
 eval "$(zoxide init zsh --cmd cd)"
 
 if [ -f "$HOME/.cache/wal/sequences" ]; then
-    cat "$HOME/.cache/wal/sequences"
+  cat "$HOME/.cache/wal/sequences"
 fi
 
-fetch
+if command -v fetch> /dev/null 2>&1; then
+  fetch
+fi
