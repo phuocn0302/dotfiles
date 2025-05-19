@@ -106,6 +106,10 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# enable/disable gap
+super + {_, shift +} g
+  bspc config window_gap {0,12}
+  
 # volume control
 XF86AudioRaiseVolume
 	pamixer -i 5
